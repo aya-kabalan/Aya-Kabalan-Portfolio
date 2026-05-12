@@ -1,76 +1,106 @@
-    /* src/components/ProjectCard/ProjectCard.module.css */
     .card {
     background: #1e293b;
-    border: 1px solid #334155;
     border-radius: 16px;
-    padding: 24px;
-    transition: all 0.3s ease-in-out;
-    position: relative;
     overflow: hidden;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    border: 1px solid rgba(56, 189, 248, 0.1);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
     .card:hover {
     transform: translateY(-10px);
     border-color: #38bdf8;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(56, 189, 248, 0.2);
     }
 
-    .badge {
-    background: rgba(56, 189, 248, 0.1);
-    color: #38bdf8;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    width: fit-content;
-    text-transform: uppercase;
+    /* حاوية الصور */
+    .imagesGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* تقسيم العرض لنصفين */
+    gap: 8px; /* مسافة بسيطة بين الصورتين */
+    padding: 12px;
+    background: rgba(15, 23, 42, 0.5);
+    }
+
+    .projectImg {
+    width: 100%;
+    height: 150px; /* طول موحد للصور لضمان التناسق */
+    object-fit: cover; /* قص الصورة لتملأ المساحة بدون تشويه */
+    border-radius: 8px;
+    transition: transform 0.4s ease;
+    }
+
+    .card:hover .projectImg {
+    transform: scale(1.05); /* حركة زووم بسيطة للصور عند الوقوف على الكارت */
+    }
+
+    .cardContent {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: right; /* محاذاة النص لليمين بما أن المحتوى عربي */
     }
 
     .title {
-    margin-top: 16px;
-    font-size: 1.5rem;
-    color: #f1f5f9;
-    }
-
-    .description {
-    color: #94a3b8;
-    line-height: 1.6;
-    font-size: 0.95rem;
-    margin: 12px 0;
-    }
-
-    .techList {
+    color: #f8fafc;
+    font-size: 1.25rem;
+    margin-bottom: 10px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    list-style: none;
-    padding: 0;
-    margin: 15px 0;
+    justify-content: space-between;
+    align-items: center;
     }
 
-    .techItem {
-    background: #0f172a;
-    color: #cbd5e1;
-    padding: 2px 10px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    border: 1px solid #1e293b;
-    }
-
-    .githubBtn {
+    .badge {
     background: #38bdf8;
     color: #0f172a;
-    text-align: center;
-    padding: 12px;
-    border-radius: 8px;
+    font-size: 0.7rem;
+    padding: 2px 10px;
+    border-radius: 20px;
     font-weight: bold;
-    text-decoration: none;
-    transition: background 0.3s;
     }
 
-    .githubBtn:hover {
-    background: #7dd3fc;
+    .desc {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    }
+
+    .techTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 20px;
+    }
+
+    .tag {
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .gitBtn {
+    margin-top: auto;
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: opacity 0.3s;
+    }
+
+    .gitBtn:hover {
+    opacity: 0.9;
+    color: #fff;
     }

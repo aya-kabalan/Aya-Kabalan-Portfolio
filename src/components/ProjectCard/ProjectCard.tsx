@@ -1,31 +1,32 @@
 import styles from './ProjectCard.module.css';
 
 interface ProjectProps {
-  title: string;
-  badge: string;
-  description: string;
-  tech: string[];
-  github: string;
+    title: string;
+    image1: string;
+    image2: string;
+    badge: string;
+    description: string;
+    tech: string[];
+    github: string;
 }
 
-const ProjectCard = ({ title, badge, description, tech, github }: ProjectProps) => {
+const ProjectCard = ({ title, image1, image2, badge, description, tech, github }: ProjectProps) => {
     return (
         <div className={styles.card}>
-        <div>
-            <span className={styles.badge}>{badge}</span>
-            <h3 className={styles.title}>{title}</h3>
-            <p className={styles.description}>{description}</p>
-            <ul className={styles.techList}>
-            {tech.map((t) => (
-                <li key={t} className={styles.techItem}>{t}</li>
-            ))}
-            </ul>
+        <div className={styles.imagesGrid}>
+            <img src={image1} alt={`${title} 1`} className={styles.projectImg} />
+            <img src={image2} alt={`${title} 2`} className={styles.projectImg} />
         </div>
-        <a href={github} className={styles.githubBtn} target="_blank">
-            معاينة الكود على GitHub
-        </a>
+        <div className={styles.cardContent}>
+            <h3>{title} <span className={styles.badge}>{badge}</span></h3>
+            <p>{description}</p>
+            <div className={styles.techTags}>
+            {tech.map((t, i) => <span key={i} className={styles.tag}>{t}</span>)}
+            </div>
+            <a href={github} target="_blank" rel="noreferrer" className={styles.gitBtn}>View Project</a>
+        </div>
         </div>
     );
-    };
+};
 
 export default ProjectCard;
